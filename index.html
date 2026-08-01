@@ -1,59 +1,191 @@
-cat > script.js << 'EOF'
-// ===== Configuración =====
-const WHATSAPP_NUMERO = '5493412139399';
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pulpo Fish & Sushi — Fisherton, Rosario</title>
+  <meta name="description" content="Pulpo Fish & Sushi. Bar de mar y sushi en Fisherton, Rosario. Cortá la semana en Pulpo, todos los días desde el atardecer." />
 
-// ===== Año dinámico en footer =====
-document.getElementById('anio').textContent = new Date().getFullYear();
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#14181B" />
 
-// ===== Menú móvil =====
-const navToggle = document.getElementById('navToggle');
-const navLinks = document.getElementById('navLinks');
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-navToggle.addEventListener('click', () => {
-  const isOpen = navLinks.classList.toggle('nav__links--open');
-  navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-});
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
 
-navLinks.querySelectorAll('a').forEach((link) => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('nav__links--open');
-    navToggle.setAttribute('aria-expanded', 'false');
-  });
-});
+  <!-- ===== NAV ===== -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#inicio" class="nav__brand">
+        <img src="assets/logo.svg" alt="Pulpo Fish & Sushi" class="nav__logo" />
+      </a>
+      <nav class="nav__links" id="navLinks">
+        <a href="#experiencia">La casa</a>
+        <a href="#menu">Menú</a>
+        <a href="#horarios">Horarios</a>
+        <a href="#ubicacion">Cómo llegar</a>
+      </nav>
+      <a href="#reservas" class="nav__cta">Reservar</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
 
-// ===== Navbar con fondo al hacer scroll =====
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('nav--scrolled', window.scrollY > 40);
-});
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="inicio">
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <p class="eyebrow">Fisherton · Rosario</p>
+      <h1 class="hero__title">Estamos abiertos</h1>
+      <p class="hero__sub">Cortá la semana en Pulpo</p>
+      <p class="hero__hours">17&nbsp;hs al cierre</p>
+      <a href="#reservas" class="btn btn--lantern">Reservar mesa</a>
+    </div>
+    <div class="hero__scroll" aria-hidden="true"><span></span></div>
+  </section>
 
-// ===== Formulario de reservas -> WhatsApp =====
-const formReserva = document.getElementById('formReserva');
+  <!-- ===== LA CASA ===== -->
+  <section class="experiencia" id="experiencia">
+    <div class="experiencia__inner">
+      <p class="eyebrow eyebrow--dark">Disfrutar de lo rico</p>
+      <h2>Pescado y mar, a fuego lento y a cuchillo fino</h2>
+      <p class="experiencia__texto">
+        Pulpo Fish &amp; Sushi es una barra de mar pensada para quedarse. Faroles de mimbre,
+        madera cálida y una carta que cruza el sushi de autor con la cocina de pescados y mariscos.
+        Un lugar para cortar la semana con una buena mesa, buena charla y una copa helada.
+      </p>
+      <div class="experiencia__stats">
+        <div><span>100%</span>Pescado fresco de temporada</div>
+        <div><span>+30</span>Piezas de sushi de autor</div>
+        <div><span>7</span>Días abiertos a la noche</div>
+      </div>
+    </div>
+  </section>
 
-function formatearFecha(valor) {
-  const [anio, mes, dia] = valor.split('-');
-  return `${dia}/${mes}/${anio}`;
-}
+  <!-- ===== MENÚ DESTACADO ===== -->
+  <section class="menu" id="menu">
+    <div class="menu__inner">
+      <p class="eyebrow">Lo más pedido</p>
+      <h2>Del mar a la mesa</h2>
 
-formReserva.addEventListener('submit', (evento) => {
-  evento.preventDefault();
+      <div class="menu__grid">
+        <article class="menu__card">
+          <h3>Nigiri &amp; Sashimi</h3>
+          <p>Cortes finos de salmón, atún y pesca del día, sobre arroz de sushi hecho en casa.</p>
+        </article>
+        <article class="menu__card">
+          <h3>Rolls de autor</h3>
+          <p>Combinaciones propias con salsas de la casa, crocantes y toques ahumados.</p>
+        </article>
+        <article class="menu__card">
+          <h3>Pulpo a la parrilla</h3>
+          <p>Nuestra firma: pulpo tierno, brasas y un toque de pimentón ahumado.</p>
+        </article>
+        <article class="menu__card">
+          <h3>Barra de tragos</h3>
+          <p>Cócteles de autor y una carta de vinos pensada para acompañar cada plato.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-  const nombre = document.getElementById('nombre').value.trim();
-  const fecha = document.getElementById('fecha').value;
-  const hora = document.getElementById('hora').value;
-  const personas = document.getElementById('personas').value;
-  const comentario = document.getElementById('comentario').value.trim();
+  <!-- ===== HORARIOS ===== -->
+  <section class="horarios" id="horarios">
+    <div class="horarios__inner">
+      <p class="eyebrow eyebrow--dark">Horarios</p>
+      <h2>Todos los días, desde el atardecer</h2>
+      <div class="horarios__tabla">
+        <div class="horarios__fila"><span>Lunes a Domingo</span><span>19:30&nbsp;hs — cierre</span></div>
+      </div>
+      <p class="horarios__nota">17&nbsp;hs al cierre los miércoles — cortá la semana con nosotros.</p>
+    </div>
+  </section>
 
-  let mensaje = `Hola Pulpo! Quiero reservar una mesa.\n`;
-  mensaje += `Nombre: ${nombre}\n`;
-  mensaje += `Fecha: ${formatearFecha(fecha)}\n`;
-  mensaje += `Hora: ${hora} hs\n`;
-  mensaje += `Personas: ${personas}`;
-  if (comentario) {
-    mensaje += `\nComentario: ${comentario}`;
-  }
+  <!-- ===== RESERVAS / UBICACIÓN ===== -->
+  <section class="reservas" id="reservas">
+    <div class="reservas__inner">
+      <div class="reservas__texto">
+        <p class="eyebrow">Reservas</p>
+        <h2>Guardamos tu mesa</h2>
+        <p>Completá el formulario y te confirmamos por WhatsApp.</p>
 
-  const url = `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(mensaje)}`;
-  window.open(url, '_blank', 'noopener');
-});
-EOF
+        <form class="form-reserva" id="formReserva">
+          <div class="form-reserva__fila">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+          </div>
+
+          <div class="form-reserva__grid">
+            <div class="form-reserva__fila">
+              <label for="fecha">Fecha</label>
+              <input type="date" id="fecha" name="fecha" required />
+            </div>
+            <div class="form-reserva__fila">
+              <label for="hora">Hora</label>
+              <input type="time" id="hora" name="hora" required />
+            </div>
+          </div>
+
+          <div class="form-reserva__fila">
+            <label for="personas">Cantidad de personas</label>
+            <input type="number" id="personas" name="personas" min="1" max="30" placeholder="Ej: 4" required />
+          </div>
+
+          <div class="form-reserva__fila">
+            <label for="comentario">Comentario (opcional)</label>
+            <textarea id="comentario" name="comentario" rows="2" placeholder="Alguna aclaración para la reserva"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn--lantern form-reserva__submit">
+            Reservar por WhatsApp
+          </button>
+        </form>
+      </div>
+      <div class="reservas__ubicacion" id="ubicacion">
+        <p class="eyebrow">Cómo llegar</p>
+        <p class="reservas__direccion">Schweitzer 9436, Fisherton, Rosario</p>
+        <div class="mapa">
+          <iframe
+            src="https://www.google.com/maps?q=Schweitzer+9436+Fisherton+Rosario&output=embed"
+            width="100%"
+            height="260"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Ubicación de Pulpo Fish & Sushi"
+          ></iframe>
+        </div>
+        
+          href="https://maps.google.com/?q=Schweitzer+9436+Fisherton+Rosario"
+          target="_blank"
+          rel="noopener"
+          class="btn btn--outline"
+        >
+          Abrir en Google Maps
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <img src="assets/logo.svg" alt="Pulpo Fish & Sushi" class="footer__logo" />
+      <div class="footer__redes">
+        <a href="https://instagram.com/pulposushi" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://wa.me/5493412139399" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+      <p class="footer__copy">© <span id="anio"></span> Pulpo Fish &amp; Sushi · Fisherton, Rosario</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
