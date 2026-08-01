@@ -256,6 +256,14 @@ h1, h2, h3 { font-family: var(--display); margin: 0; }
 .reservas__texto p { color: rgba(246, 239, 227, 0.75); line-height: 1.6; margin: 0 0 28px; }
 .reservas__ubicacion { border-left: 1px solid rgba(216, 155, 74, 0.25); padding-left: 48px; }
 .reservas__direccion { color: var(--crema-suave); font-size: 1.1rem; margin: 0 0 24px; line-height: 1.5; }
+.mapa {
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 20px;
+  filter: grayscale(0.15) contrast(1.05);
+  border: 1px solid rgba(216, 155, 74, 0.25);
+}
+.mapa iframe { display: block; }
 
 /* ===== FOOTER ===== */
 .footer { background: var(--noche-2); padding: 48px 24px; border-top: 1px solid rgba(216, 155, 74, 0.15); }

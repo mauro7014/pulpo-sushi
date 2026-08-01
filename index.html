@@ -1,3 +1,4 @@
+cat > index.html << 'EOF'
 <!DOCTYPE html>
 <html lang="es-AR">
 <head>
@@ -115,7 +116,7 @@
         <h2>Guardamos tu mesa</h2>
         <p>Contanos día, horario y cantidad de personas y te confirmamos por WhatsApp.</p>
         
-          href="https://wa.me/5493410000000?text=Hola%20Pulpo!%20Quiero%20reservar%20una%20mesa"
+          href="https://wa.me/5493412139399?text=Hola%20Pulpo!%20Quiero%20reservar%20una%20mesa"
           class="btn btn--lantern"
           target="_blank"
           rel="noopener"
@@ -126,13 +127,25 @@
       <div class="reservas__ubicacion" id="ubicacion">
         <p class="eyebrow">Cómo llegar</p>
         <p class="reservas__direccion">Schweitzer 9436, Fisherton, Rosario</p>
+        <div class="mapa">
+          <iframe
+            src="https://www.google.com/maps?q=Schweitzer+9436+Fisherton+Rosario&output=embed"
+            width="100%"
+            height="260"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Ubicación de Pulpo Fish & Sushi"
+          ></iframe>
+        </div>
         
           href="https://maps.google.com/?q=Schweitzer+9436+Fisherton+Rosario"
           target="_blank"
           rel="noopener"
           class="btn btn--outline"
         >
-          Ver en el mapa
+          Abrir en Google Maps
         </a>
       </div>
     </div>
@@ -144,7 +157,7 @@
       <img src="assets/logo.svg" alt="Pulpo Fish & Sushi" class="footer__logo" />
       <div class="footer__redes">
         <a href="https://instagram.com/pulposushi" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://wa.me/5493410000000" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://wa.me/5493412139399" target="_blank" rel="noopener">WhatsApp</a>
       </div>
       <p class="footer__copy">© <span id="anio"></span> Pulpo Fish &amp; Sushi · Fisherton, Rosario</p>
     </div>
@@ -153,3 +166,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+EOF
