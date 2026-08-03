@@ -265,6 +265,7 @@ h1, h2, h3 { font-family: var(--display); margin: 0; }
   color: var(--ambar-suave);
 }
 .form-reserva input,
+.form-reserva select,
 .form-reserva textarea {
   font-family: var(--cuerpo);
   font-size: 0.95rem;
@@ -274,6 +275,14 @@ h1, h2, h3 { font-family: var(--display); margin: 0; }
   background: rgba(246, 239, 227, 0.06);
   color: var(--crema-suave);
 }
+.form-reserva select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23e8b978' stroke-width='1.5' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+.form-reserva select option { background: var(--noche); color: var(--crema-suave); }
 .form-reserva input::placeholder,
 .form-reserva textarea::placeholder { color: rgba(246, 239, 227, 0.4); }
 .form-reserva input:focus,
@@ -284,7 +293,6 @@ h1, h2, h3 { font-family: var(--display); margin: 0; }
 }
 .form-reserva textarea { resize: vertical; min-height: 60px; }
 .form-reserva__submit { border: none; cursor: pointer; margin-top: 6px; align-self: flex-start; }
-
 .reservas__ubicacion { border-left: 1px solid rgba(216, 155, 74, 0.25); padding-left: 48px; }
 .reservas__direccion { color: var(--crema-suave); font-size: 1.1rem; margin: 0 0 24px; line-height: 1.5; }
 .mapa {
