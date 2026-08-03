@@ -1,5 +1,5 @@
 // ===== Configuración =====
-const WHATSAPP_NUMERO = '5493412139399';
+const WHATSAPP_NUMERO = '5493412603942';
 
 // ===== Año dinámico en footer =====
 document.getElementById('anio').textContent = new Date().getFullYear();
